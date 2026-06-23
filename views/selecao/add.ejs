@@ -1,0 +1,36 @@
+<%- include('../cabecalho.ejs')%>
+    <main class="container">
+        <a href="/selecao" class="back-link">← Voltar para lista</a>
+
+        <div class="form-container">
+            <h2>Cadastrar Nova Seleção</h2>
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="nome">Nome da Seleção *</label>
+                    <input type="text" id="nome" name="nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="cores">Cores *</label>
+                    <input type="text" id="cores" name="cores">
+                </div>
+
+                <div class="form-group">
+                    <label for="continentes">Continentes *</label>
+                    <input type="text" id="continentes" name="continentes">
+                </div>
+
+                <div class="form-group">
+                    <label for="titulos">Títulos *</label>
+                    <input type="number" id="titulos" name="titulos">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <a href="/selecao" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <%- include('../rodape.ejs')%>

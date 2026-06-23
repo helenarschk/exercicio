@@ -2,13 +2,13 @@
 
     <main class="container">
         <div class="page-header">
-            <h2>Lista de Gêneros</h2>
-            <a href="/generos/add" class="btn btn-success">+ Novo Gênero</a>
+            <h2>Lista de Seleções</h2>
+            <a href="/selecao/add" class="btn btn-success">+ Nova Seleção</a>
         </div>
 
         <div class="search">
             <form method="post">
-                <input type="text" name="pesquisar" placeholder="Nome do artista" class="form-container">
+                <input type="text" name="pesquisar" placeholder="Nome da Seleção" class="form-container">
                 <input type="submit" value="Buscar" class="btn btn-success">
             </form>
         </div>
@@ -18,18 +18,26 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Continente</th>
+                        <th>Título</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <%generos.forEach(genero=> {%>
+                    <%selecao.forEach(selecao=> {%>
                         <tr>
                             <td>
-                                <%=genero.nome%>
+                                <%=selecao.nome%>
                             </td>
                             <td>
-                                <a href="/generos/del/<%=genero.id%>" class="link">Excluir</a>
-                                <a href="/generos/edt/<%=genero.id%>" class="link">Editar</a>
+                                <%=selecao.continente%>
+                            </td>
+                            <td>
+                                <%=selecao.titulos%>
+                            </td>
+                            <td>
+                                <a href="/selecao/del/<%=selecao.id%>" class="link">Excluir</a>
+                                <a href="/selecao/edt/<%=selecao.id%>" class="link">Editar</a>
                             </td>
                         </tr>
                         <%})%>

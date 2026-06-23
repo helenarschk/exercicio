@@ -276,12 +276,12 @@ tbody tr:last-child td {
     margin-top: 30px;
 }
 
-.musicas-list {
+.selecao-list {
     list-style: none;
     padding: 0;
 }
 
-.musicas-list li {
+.selecao-list li {
     margin-bottom: 10px;
 }
 
