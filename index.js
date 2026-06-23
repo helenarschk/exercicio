@@ -55,7 +55,7 @@ res.render("selecao/edtok")
 app.post('/selecao', async (req, res) => {
   const { pesquisar } = req.body;
   const selecao = await Selecao.find({
-    nome: new RegExp(pesquisar, 'i')
+    titulos: {$gt:pesquisar}
   });
   res.render("selecao/lst", { selecao });
 })
@@ -63,8 +63,8 @@ app.post('/selecao', async (req, res) => {
 //jogador
 
 app.get("/jogador", async (req, res) => {
-  const jogador = await Jogador.find()
-  res.render("jogador/lst", { jogador });
+  const jogadores = await Jogador.find()
+  res.render("jogador/lst", { jogadores });
 });
 
 app.get('/jogador/del/:id', async (req, res) => {

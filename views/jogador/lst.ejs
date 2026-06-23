@@ -2,13 +2,13 @@
 
     <main class="container">
         <div class="page-header">
-            <h2>Lista de Artistas</h2>
+            <h2>Lista de Jogadores</h2>
             <a href="/jogador/add" class="btn btn-success">+ Novo Jogador</a>
         </div>
 
         <div class="search">
             <form method="post">
-                <input type="text" name="pesquisar" placeholder="Títulos" class="form-container">
+                <input type="text" name="pesquisar" placeholder="Nome do Jogador" class="form-container">
                 <input type="submit" value="Buscar" class="btn btn-success">
             </form>
         </div>
@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%jogador.forEach(jogador=> {%>
+                    <%jogadores.forEach(jogador=> {%>
                         <tr>
                             <td>
                                 <%=jogador.nome%>
