@@ -1,0 +1,57 @@
+<%- include('../cabecalho.ejs')%>
+
+    <main class="container">
+        <div class="page-header">
+            <h2>Lista de Filmes</h2>
+            <a href="/filmes/add" class="btn btn-success">+ Novo Filme</a>
+        </div>
+
+        <div class="search">
+            <form method="post">
+                <input type="text" name="pesquisar" placeholder="Título do Filme..." class="form-container">
+                <input type="submit" value="Buscar" class="btn btn-success">
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Duração (min)</th>
+                        <th>Classificação Indicativa</th>
+                        <th>Gênero</th>
+                        <th>Em Cartaz</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%filme.forEach(filme=> {%>
+                        <tr>
+                            <td>
+                                <%=filme.titulo%>
+                            </td>
+                            <td>
+                                <%=filme.duracao%>
+                            </td>
+                            <td>
+                                <%=filme.classificacao_indicativa%>
+                            </td>
+                            <td>
+                                <%=filme.genero%>
+                            </td>
+                            <td>
+                                <%=filme.em_cartaz%>
+                            </td>
+                            <td>
+                                <a href="/filmes/del/<%=filme.id%>" class="link">Excluir</a>
+                                <a href="/filmes/edt/<%=filme.id%>" class="link">Editar</a>
+                            </td>
+                        </tr>
+                        <%})%>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <%- include('../rodape.ejs')%>

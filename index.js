@@ -1,6 +1,6 @@
 import express from "express";
-import Selecao from './models/Selecao.js';
-import Jogador from './models/Jogador.js';
+import Filme from './models/Filme.js';
+import Sala from './models/Sala.js';
 const app = express();
 const PORT = 3000;
 
@@ -20,84 +20,86 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-//seleção
+//filmes
 
-app.get("/selecao", async (req, res) => {
-  const selecao = await Selecao.find();
-  res.render("selecao/lst", {selecao});
+app.get("/filmes", async (req, res) => {
+  const filme = await Filme.find();
+  res.render("filmes/lst", {filme});
 });
 
-app.get("/selecao/add", (req, res) => {
-    res.render("selecao/add");
+app.get("/filmes/add", (req, res) => {
+    res.render("filmes/add");
 });
 
-app.post("/selecao/add", async (req, res) => {
-  const {nome, cores, continentes, titulos} = req.body;
-  await Selecao.create({nome, cores, continentes, titulos});
-  res.render("selecao/addok");
+app.post("/filmes/add", async (req, res) => {
+  const {titulo, duracao, classificacao_indicativa, genero, em_cartaz} = req.body;
+  await Filme.create({titulo, duracao, classificacao_indicativa, genero, em_cartaz});
+  res.render("filmes/addok");
 });
 
-app.get('/selecao/del/:id', async (req, res) => {
-const selecao = await Selecao.findByIdAndDelete(req.params.id)
-res.redirect("/selecao")
+app.get('/filmes/del/:id', async (req, res) => {
+const filme = await Filme.findByIdAndDelete(req.params.id)
+res.redirect("/filmes")
 })
 
-app.get('/selecao/edt/:id', async (req, res) => {
-const selecao = await Selecao.findById(req.params.id)
-res.render("selecao/edt", {selecao})
+app.get('/filmes/edt/:id', async (req, res) => {
+const filme = await Filme.findById(req.params.id)
+res.render("filmes/edt", {filme})
 })
 
-app.post('/selecao/edt/:id', async (req, res) => {
-const selecao = await Selecao.findByIdAndUpdate(req.params.id, req.body)
-res.render("selecao/edtok")
+app.post('/filmes/edt/:id', async (req, res) => {
+const filme = await Filme.findByIdAndUpdate(req.params.id, req.body)
+res.render("filmes/edtok")
 })
 
-app.post('/selecao', async (req, res) => {
+app.post('/filmes', async (req, res) => {
   const { pesquisar } = req.body;
-  const selecao = await Selecao.find({
-    titulos: {$gt:pesquisar}
+  const filme = await Filme.find({
+    titulo: new RegExp(pesquisar, 'i')
   });
-  res.render("selecao/lst", { selecao });
+  res.render("filmes/lst", { filme });
 })
 
-//jogador
+//salas
 
-app.get("/jogador", async (req, res) => {
-  const jogadores = await Jogador.find()
-  res.render("jogador/lst", { jogadores });
+app.get("/salas", async (req, res) => {
+  const sala = await Sala.find()
+  res.render("salas/lst", { sala });
 });
 
-app.get('/jogador/del/:id', async (req, res) => {
-const jogador = await Jogador.findByIdAndDelete(req.params.id)
-res.redirect("/jogador")
+app.get('/salas/del/:id', async (req, res) => {
+const sala = await Sala.findByIdAndDelete(req.params.id)
+res.redirect("/salas")
 })
 
-app.get("/jogador/add", (req, res) => {
-    res.render("jogador/add");
+app.get("/salas/add", (req, res) => {
+    res.render("salas/add");
 });
 
-app.post("/jogador/add", async (req, res) => {
-  const {nome, numero, selecao, gols, assistencias} = req.body;
-  await Jogador.create({nome, numero, selecao, gols, assistencias});
-  res.render("jogador/addok");
+app.post("/salas/add", async (req, res) => {
+  const {numero, capacidade} = req.body;
+  await Sala.create({numero, capacidade});
+  res.render("salas/addok");
 });
 
-app.get('/jogador/edt/:id', async (req, res) => {
-const jogador = await Jogador.findById(req.params.id)
-res.render("jogador/edt", {jogador})
+app.get('/salas/edt/:id', async (req, res) => {
+const sala = await Sala.findById(req.params.id)
+res.render("salas/edt", {sala})
 })
 
-app.post('/jogador/edt/:id', async (req, res) => {
-const jogador = await Jogador.findByIdAndUpdate(req.params.id, req.body)
-res.render("jogador/edtok")
+app.post('/salas/edt/:id', async (req, res) => {
+const sala = await Sala.findByIdAndUpdate(req.params.id, req.body)
+res.render("salas/edtok")
 })
 
-app.post('/jogador', async (req, res) => {
+//pesquisar capacidade maior ou igual ao número inserido pelo usuário
+
+app.post('/salas', async (req, res) => {
   const { pesquisar } = req.body;
-  const jogadores = await Jogador.find({
-    nome: new RegExp(pesquisar, 'i')
+  const sala = await Sala.find({
+    capacidade: Number(pesquisar)
   });
-  res.render("jogador/lst", { jogadores });
+  res.render("salas/lst", { sala });
 })
 
 app.listen(PORT, ()=>{

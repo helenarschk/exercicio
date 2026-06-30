@@ -1,0 +1,45 @@
+<%- include('../cabecalho.ejs')%>
+    <main class="container">
+        <a href="/filmes" class="back-link">← Voltar para lista</a>
+
+        <div class="form-container">
+            <h2>Cadastrar Novo Filme</h2>
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="titulo">Título do Filme *</label>
+                    <input type="text" id="titulo" name="titulo">
+                </div>
+
+                <div class="form-group">
+                    <label for="duracao">Duração *</label>
+                    <input type="number" id="duracao" name="duracao">
+                </div>
+
+                <div class="form-group">
+                    <label for="classificacao_indicativa">Classificação Indicativa *</label>
+                    <input type="number" id="classificacao_indicativa" name="classificacao_indicativa">
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero *</label>
+                    <input type="text" id="genero" name="genero">
+                </div>
+
+                <div class="form-group">
+                    <label for="em_cartaz">Em Cartaz *</label>
+                    <select id="em_cartaz" name="em_cartaz">
+                        <option value="">Selecione uma opção</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <a href="/filmes" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <%- include('../rodape.ejs')%>

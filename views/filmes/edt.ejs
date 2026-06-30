@@ -1,0 +1,44 @@
+<%-include('../cabecalho.ejs')%>
+    <header>
+        <h3>Editar Filme</h3>
+    </header>
+    <div class="content">
+        <form id="form-musica" method="post" autocomplete="off">
+            <div class="grid">
+                <div>
+                    <label for="nome">ID do Filme</label>
+                    <input id="id" value="<%=filme.id%>" name="id" type="text" placeholder="Ex:Gope" required>
+                </div>
+                <div>
+                    <label for="titulo">Título do Filme</label>
+                    <input id="titulo" value="<%=filme.titulo%>" name="titulo" type="text" placeholder="Ex:Gope" required>
+                </div>
+                <div>
+                    <label for="duracao">Duração</label>
+                    <input id="duracao" value="<%=filme.duracao%>" name="duracao" type="text" placeholder="Ex:Gope"
+                        required>
+                </div>
+                <div>
+                    <label for="classificacao_indicativa">Classificação Indicativa</label>
+                    <input id="classificacao_indicativa" value="<%=filme.classificacao_indicativa%>" name="classificacao_indicativa" type="number" placeholder="Ex:Gope"
+                        required>
+                </div>
+                <div>
+                    <label for="genero">Gênero</label>
+                    <input id="genero" value="<%=filme.genero%>" name="genero" type="text" placeholder="Ex:Gope" required>
+                </div>
+                <div>
+                    <label for="em_cartaz">Em Cartaz</label>
+                    <input id="em_cartaz" value="<%=filme.em_cartaz%>" name="em_cartaz" type="text"
+                        placeholder="Ex:Gope" required>
+                </div>
+            </div>
+            <div class="field-help">Os campos com * são obrigatórios.</div>
+            <footer>
+                <a type="button" class="btn ghost" id="btn-cancelar" href="/filmes">Cancelar</a>
+                <button type="submit" class="btn primary">Editar Filme</button>
+            </footer>
+        </form>
+    </div>
+
+    <%-include('../rodape.ejs')%>

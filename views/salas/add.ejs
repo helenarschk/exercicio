@@ -1,0 +1,26 @@
+<%- include('../cabecalho.ejs')%>
+    <main class="container">
+        <a href="/salas" class="back-link">← Voltar para lista</a>
+
+        <div class="form-container">
+            <h2>Cadastrar Nova Sala</h2>
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="numero">Número da Sala *</label>
+                    <input type="number" id="numero" name="numero">
+                </div>
+
+                <div class="form-group">
+                    <label for="capacidade">Capacidade *</label>
+                    <input type="number" id="capacidade" name="capacidade">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <a href="/salas" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <%- include('../rodape.ejs')%>
